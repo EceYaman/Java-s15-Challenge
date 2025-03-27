@@ -7,12 +7,12 @@ public class Book {
     private Category category;
     private BookStatus status;
 
-    public Book(int id, String title, Author author, Category category, BookStatus status) {
+    public Book(int id, String title, Author author, Category category) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.category = category;
-        this.status = status;
+        this.status = BookStatus.AVAILABLE;
     }
 
     public int getId() {
@@ -53,5 +53,13 @@ public class Book {
 
     public void setStatus(BookStatus status) {
         this.status = status;
+    }
+
+    public void markAsBorrowed() {
+        this.status = BookStatus.BORROWED;
+    }
+
+    public void markAsAvailable() {
+        this.status = BookStatus.AVAILABLE;
     }
 }
