@@ -62,4 +62,10 @@ public class Book {
     public void markAsAvailable() {
         this.status = BookStatus.AVAILABLE;
     }
+
+    @Override
+    public String toString() {
+        return "Book [id=" + id + ", title=" + title + ", author=" + author.getName()
+                + ", category=" + category.getCategoryName() + ", status=" + status.getDescription() + "]";
+    }
 }

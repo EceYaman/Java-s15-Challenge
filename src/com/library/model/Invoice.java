@@ -44,4 +44,9 @@ public class Invoice {
     public void setAmount(double amount) {
         this.amount = amount;
     }
+
+    @Override
+    public String toString() {
+        return "Invoice [id=" + invoiceId + ", reader=" + reader.getName() + ", book=" + book.getTitle() + ", amount=" + amount + "]";
+    }
 }

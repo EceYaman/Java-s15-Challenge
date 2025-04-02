@@ -20,6 +20,8 @@ public class Reader extends Person {
         this.borrowedBooks = borrowedBooks;
     }
 
+    public int getBorrowLimit() { return borrowLimit; }
+
     public void addBorrowedBook(Book book) {
         borrowedBooks.add(book);
     }
@@ -29,7 +31,7 @@ public class Reader extends Person {
     }
 
     @Override
-    public void displayInfo() {
-        System.out.println("Reader [id=" + getId() + ", name=" + getName() + ", email=" + getEmail() + "]");
+    public String toString() {
+        return "Reader [id=" + getId() + ", name=" + getName() + ", email=" + getEmail() + "]";
     }
 }

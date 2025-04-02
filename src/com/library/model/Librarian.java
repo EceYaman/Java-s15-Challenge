@@ -17,8 +17,16 @@ public class Librarian extends Person{
     }
 
 
+    public void checkInBook(Book book, Reader reader) {
+        System.out.println("Kitap " + book.getTitle() + " " + reader.getName() + " tarafından check-in yapıldı.");
+    }
+
+    public void checkOutBook(Book book, Reader reader) {
+        System.out.println("Kitap " + book.getTitle() + " " + reader.getName() + " tarafından check-out yapıldı.");
+    }
+
     @Override
-    public void displayInfo() {
-        System.out.println("Librarian [id=" + getId() + ", name=" + getName() + ", staffNumber=" + staffNumber + "]");
+    public String toString() {
+        return "Librarian [id=" + getId() + ", name=" + getName() + ", staffNumber=" + staffNumber + "]";
     }
 }

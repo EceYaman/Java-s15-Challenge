@@ -34,4 +34,9 @@ public class Author {
     public void setBiography(String biography) {
         this.biography = biography;
     }
+
+    @Override
+    public String toString() {
+        return "Author [id=" + id + ", name=" + name + "]";
+    }
 }

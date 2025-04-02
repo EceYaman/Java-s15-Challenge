@@ -35,5 +35,6 @@ public abstract class Person {
         this.email = email;
     }
 
-    public abstract void displayInfo();
+    @Override
+    public abstract String toString();
 }
