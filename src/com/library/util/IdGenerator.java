@@ -1,4 +1,4 @@
-package library.util;
+package com.library.util;
 
 public class IdGenerator {
 }

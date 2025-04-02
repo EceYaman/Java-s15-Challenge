@@ -1,8 +1,8 @@
-package library.service;
+package com.library.service;
 
-import library.model.Book;
-import library.model.BookStatus;
-import library.model.Reader;
+import com.library.model.Book;
+import com.library.model.BookStatus;
+import com.library.model.Reader;
 
 import java.util.HashMap;
 import java.util.Map;

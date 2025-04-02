@@ -1,4 +1,4 @@
-package library.model;
+package com.library.model;
 
 public class Category {
     private CategoryType categoryType;

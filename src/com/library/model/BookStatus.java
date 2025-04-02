@@ -1,4 +1,4 @@
-package library.model;
+package com.library.model;
 
 public enum BookStatus {
     AVAILABLE,
