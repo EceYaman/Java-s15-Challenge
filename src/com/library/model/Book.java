@@ -1,17 +1,20 @@
 package com.library.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Book {
     private int id;
     private String title;
     private Author author;
-    private Category category;
+    private Set<Category> categories;
     private BookStatus status;
 
-    public Book(int id, String title, Author author, Category category) {
+    public Book(int id, String title, Author author) {
         this.id = id;
         this.title = title;
         this.author = author;
-        this.category = category;
+        this.categories = new HashSet<>();
         this.status = BookStatus.AVAILABLE;
     }
 
@@ -39,12 +42,12 @@ public class Book {
         this.author = author;
     }
 
-    public Category getCategory() {
-        return category;
+    public Set<Category> getCategories() {
+        return categories;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 
     public BookStatus getStatus() {
@@ -63,9 +66,17 @@ public class Book {
         this.status = BookStatus.AVAILABLE;
     }
 
+    public void addCategory(Category category) {
+        categories.add(category);
+    }
+
     @Override
     public String toString() {
-        return "Book [id=" + id + ", title=" + title + ", author=" + author.getName()
-                + ", category=" + category.getCategoryName() + ", status=" + status.getDescription() + "]";
+        StringBuilder catList = new StringBuilder();
+        for (Category cat : categories) {
+            catList.append(cat.getCategoryName()).append(" ");
+        }
+        return "Book [id=" + id + ", title=" + title + ", author=" + author.getName() +
+                ", categories=" + catList.toString().trim() + ", status=" + status.getDescription() + "]";
     }
 }
