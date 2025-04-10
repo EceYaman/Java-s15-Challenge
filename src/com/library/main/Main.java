@@ -1,7 +1,7 @@
 package com.library.main;
 
 import com.library.model.*;
-import com.library.service.LibraryException;
+import com.library.exception.LibraryException;
 import com.library.service.LibraryService;
 import com.library.service.PaymentService;
 import com.library.service.PaymentServiceImpl;

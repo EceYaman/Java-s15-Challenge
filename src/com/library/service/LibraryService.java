@@ -1,5 +1,6 @@
 package com.library.service;
 
+import com.library.exception.LibraryException;
 import com.library.model.Book;
 import com.library.model.BookStatus;
 import com.library.model.Invoice;
@@ -32,7 +33,7 @@ public class LibraryService {
             return;
         }
         books.put(book.getId(), book);
-        System.out.println("------" + book.getTitle() + " kütüphaneye eklendi.");
+        System.out.println("------" + book.getTitle() + " kitabı kütüphaneye eklendi.");
     }
 
     // Kitap bilgilerini güncelleme
@@ -42,14 +43,22 @@ public class LibraryService {
             throw new LibraryException("------Güncellenecek kitap bulunamadı.");
         }
         books.put(bookId, updatedBook);
-        System.out.println("------Kitap bilgileri güncellendi: " + updatedBook.getTitle());
+        System.out.println("------Kitap bilgileri güncellendi:");
+        System.out.println("      -Kitap ID: " + updatedBook.getId());
+        System.out.println("      -Kitap Adı: " + updatedBook.getTitle());
+        System.out.println("      -Yazar: " + updatedBook.getAuthor().getName());
+        System.out.println("      -Yazarın Biyografisi: " + updatedBook.getAuthor().getBiography());
+        System.out.print("      -Kategori: ");
+        updatedBook.getCategories().forEach(category -> System.out.print(category.getCategoryName() + " "));
+        System.out.println();
+        System.out.println("      -Kitap Durumu: " + updatedBook.getStatus().getDescription());
     }
 
     // Kitap silme
     public void deleteBook(int bookId) {
         Book removed = books.remove(bookId);
         if (removed != null) {
-            System.out.println("------" + removed.getTitle() + " kütüphaneden silindi.");
+            System.out.println("------" + removed.getTitle() + " kitabı kütüphaneden silindi.");
         } else {
             System.out.println("------Silinecek kitap bulunamadı.");
         }
@@ -144,7 +153,7 @@ public class LibraryService {
 
         reader.addBorrowedBook(book);
         book.markAsBorrowed();
-        System.out.println("------" + book.getTitle() + " kitabı" + reader.getName() + " tarafından ödünç alındı.");
+        System.out.println("------" + book.getTitle() + " kitabı " + reader.getName() + " tarafından ödünç alındı.");
 
         Invoice invoice = new Invoice(invoiceCounter++, reader, book, FIXED_BORROW_FEE);
         invoices.add(invoice);
@@ -168,7 +177,7 @@ public class LibraryService {
 
         reader.removeBorrowedBook(book);
         book.markAsAvailable();
-        System.out.println("------" + book.getTitle() + " kitabı" + reader.getName() + " tarafından iade edildi.");
+        System.out.println("------" + book.getTitle() + " kitabı " + reader.getName() + " tarafından iade edildi.");
 
 
         Invoice invoice = findInvoice(reader, book);
